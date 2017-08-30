@@ -33,8 +33,6 @@ def mouseDragged():
     grid[gridY][gridX] = 1
     
     
-    
-            
 pygame.font.init()
 
 GRID_WIDTH  = 32
@@ -42,7 +40,7 @@ GRID_HEIGHT = 32
 PIXEL_SIZE = 15
 MARGIN = 25
 
-screen_size = [800,800]
+screen_size = [530,530]
 icon = pygame.Surface((1,1)); icon.set_alpha(0); pygame.display.set_icon(icon)
 pygame.display.set_caption("Dessin")
 surface = pygame.display.set_mode(screen_size)
