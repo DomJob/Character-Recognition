@@ -37,9 +37,9 @@ def mouseDragged():
             
 pygame.font.init()
 
-GRID_WIDTH  = 20
-GRID_HEIGHT = 20
-PIXEL_SIZE = 20
+GRID_WIDTH  = 32
+GRID_HEIGHT = 32
+PIXEL_SIZE = 15
 MARGIN = 25
 
 screen_size = [800,800]
@@ -48,7 +48,7 @@ pygame.display.set_caption("Dessin")
 surface = pygame.display.set_mode(screen_size)
 
 grid = []
-for y in range(GRID_WIDTH):
+for y in range(GRID_HEIGHT):
     row = []
     
     for x in range(GRID_WIDTH):
@@ -61,15 +61,15 @@ while True:
     
     # Dessiner la grille
     
-    for x in range(0, PIXEL_SIZE * GRID_HEIGHT + 1, PIXEL_SIZE):
+    for x in range(0, PIXEL_SIZE * GRID_WIDTH + 1, PIXEL_SIZE):
         pygame.draw.line(surface, (0,0,0), (MARGIN + x, MARGIN), (MARGIN + x, MARGIN + PIXEL_SIZE * GRID_HEIGHT))
-    for y in range(0, PIXEL_SIZE * GRID_WIDTH + 1, PIXEL_SIZE):
+    for y in range(0, PIXEL_SIZE * GRID_HEIGHT + 1, PIXEL_SIZE):
         pygame.draw.line(surface, (0,0,0), (MARGIN, MARGIN + y), (MARGIN + PIXEL_SIZE * GRID_WIDTH, MARGIN + y))
     
     # Remplir les pixels noirs
     
-    for y in range(GRID_WIDTH):
-        for x in range(GRID_HEIGHT):
+    for y in range(GRID_HEIGHT):
+        for x in range(GRID_WIDTH):
             pixel = grid[y][x]
             if pixel == 1:
                 pygame.draw.rect(surface, (0,0,0), (MARGIN+x*PIXEL_SIZE, MARGIN+y*PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE))
