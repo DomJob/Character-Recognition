@@ -25,8 +25,34 @@ class Grid:
 
             self.grid.append(row)
 
+    def removeBlankRowsAndColumns(self):
+        while self.grid[0] == [0] * self.WIDTH:
+            self.grid.pop(0)
+            self.grid.append([0] * self.WIDTH)
+
+        while True:
+            empty = True
+            for row in self.grid:
+                if row[0] == 1:
+                    empty = False
+                    break
+
+            if empty:
+                for row in self.grid:
+                        row.pop(0)
+                        row.append(0)
+            else:
+                break
+
     def getState(self):
-        pass
+        self.removeBlankRowsAndColumns()
+        state = ""
+
+        for row in self.grid:
+            for pixel in row:
+                state += str(pixel)
+
+        return state
 
     def mouseDragged(self):
         x, y = pygame.mouse.get_pos()
@@ -54,7 +80,8 @@ class Grid:
         # Dessiner la grille
 
         pygame.draw.rect(self.surface, self.GRID_COLOR,
-                         (self.position[0], self.position[1], self.WIDTH * self.PIXEL_SIZE+1, self.HEIGHT * self.PIXEL_SIZE+1), 1)
+                         (self.position[0], self.position[1],
+                          self.WIDTH * self.PIXEL_SIZE+1, self.HEIGHT * self.PIXEL_SIZE+1), 1)
 
         for x in range(1, self.HEIGHT):
             lineX = self.position[0] + x * self.PIXEL_SIZE
