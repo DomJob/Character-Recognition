@@ -8,11 +8,11 @@ class Grid:
     GRID_COLOR  = (180,180,180)
     PIXEL_COLOR = (0,0,0)
 
-    def __init__(self, position, surface):
-        self.grid = []
+    def __init__(self, surface, position):
         self.position = position
         self.surface = surface
 
+        self.grid = []
         self.reset()
 
     def reset(self):
@@ -28,7 +28,9 @@ class Grid:
     def getState(self):
         pass
 
-    def mouseDragged(self, x, y):
+    def mouseDragged(self):
+        x, y = pygame.mouse.get_pos()
+
         if x<self.position[0] or x>=self.position[0]+self.PIXEL_SIZE*self.WIDTH:
             return
         if y<self.position[1] or y>=self.position[1]+self.PIXEL_SIZE*self.HEIGHT:
