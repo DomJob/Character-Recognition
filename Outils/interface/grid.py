@@ -54,6 +54,14 @@ class Grid:
 
         return state
 
+    def saveState(self, character):
+        state = self.getState()
+
+        file = open('data/characters.txt','a')
+        file.write("%s\t%s\n" % (character, state))
+
+        self.reset()
+
     def mouseDragged(self):
         x, y = pygame.mouse.get_pos()
 

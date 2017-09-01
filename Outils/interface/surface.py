@@ -35,6 +35,12 @@ class Surface:
                 self.mouseDown = False
             if event.type == pygame.MOUSEMOTION and self.mouseDown:
                 self.mouseDragged()
+            if event.type == pygame.KEYDOWN:
+                if (event.key >= K_0 and event.key <= K_9) or (event.key >= K_a and event.key <= K_z):
+                    keyPressed = chr(event.key)
+                    keyPressed = keyPressed.upper()
+
+                    self.grid.saveState(keyPressed)
 
     def mouseClick(self):
         self.mouseDragged()
