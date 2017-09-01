@@ -25,6 +25,23 @@ class Grid:
 
             self.grid.append(row)
 
+    def getState(self):
+        pass
+
+    def mouseDragged(self, x, y):
+        if x<self.position[0] or x>=self.position[0]+self.PIXEL_SIZE*self.WIDTH:
+            return
+        if y<self.position[1] or y>=self.position[1]+self.PIXEL_SIZE*self.HEIGHT:
+            return
+
+        x -= self.position[0]
+        y -= self.position[1]
+
+        gridX = x // self.PIXEL_SIZE
+        gridY = y // self.PIXEL_SIZE
+
+        self.fillPixel(gridX, gridY)
+
     def fillPixel(self, x, y):
         self.grid[y][x] = 1
 
