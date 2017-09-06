@@ -143,10 +143,35 @@ class BackPropagationNetwork:
 # If run as a script, create a test object
 #
 if __name__ == "__main__":
-    lvInput = np.array([[0,0],[1,1],[0,1],[1,0]])
-    lvTarget = np.array([[0.00],[0.00],[1.00],[1.00]])
+    charset="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    inputList = []
+    outputList = []
+
+    charsetLines = open('characters.txt','r').readlines()
+    i=0
+    for line in charsetLines:
+        i+=1
+        #if i==4:
+        #    break
+        line = line.strip().split("\t")
+        pixelString = line[1]
+        pixels = [float(p) for p in pixelString]
+        inputList.append(pixels)
+
+        outputLetter = line[0]
+
+        letterIndex = charset.index(outputLetter)
+
+        output = [0.0] * 36
+        output[letterIndex] = 1.0
+
+        outputList.append(output)
+
+    lvInput = np.array(inputList)
+    lvTarget = np.array(outputList)
     
-    bpn = BackPropagationNetwork((2,2,1))
+    bpn = BackPropagationNetwork((1024,15,36))
     print(bpn.shape)
     
     lnMax = 1000000
@@ -154,14 +179,14 @@ if __name__ == "__main__":
     deltaErr = 0
     lastErr = 0
     for i in range(lnMax+1):
-        err = bpn.TrainEpoch(lvInput,lvTarget,trainingRate = 0.2, momentum=0.7)
+        err = bpn.TrainEpoch(lvInput, lvTarget, trainingRate = 0.001, momentum=0)
         deltaErr = lastErr - err
         
         
-        if i % 2500 == 0:
+        if i % 10 == 0:
             print("Iteration {0}\tError: {1:0.6f}".format(i,err))
         if err <= lnErr:
-            print("Minimum error reached at iteration {0}".format(i))
+            print("Minimum error reached at iteration {0}\tError: {1:0.6f}".format(i, err))
             break
     
     lvOutput = bpn.Run(lvInput)
