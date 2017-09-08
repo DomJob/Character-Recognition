@@ -157,9 +157,9 @@ if __name__ == "__main__":
         #    break
 
         outputLetter = line[0]
-
-
         line = line.strip().split("\t")
+
+
         pixelString = line[1]
         pixels = [float(p) for p in pixelString]
         inputList.append(pixels)

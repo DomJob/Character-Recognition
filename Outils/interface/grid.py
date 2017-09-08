@@ -1,9 +1,9 @@
 import pygame
 
 class Grid:
-    WIDTH = 32
-    HEIGHT = 32
-    PIXEL_SIZE = 10
+    WIDTH = 16
+    HEIGHT = 16
+    PIXEL_SIZE = 15
 
     GRID_COLOR  = (180,180,180)
     PIXEL_COLOR = (0,0,0)
@@ -25,27 +25,8 @@ class Grid:
 
             self.grid.append(row)
 
-    def removeBlankRowsAndColumns(self):
-        while self.grid[0] == [0] * self.WIDTH:
-            self.grid.pop(0)
-            self.grid.append([0] * self.WIDTH)
-
-        while True:
-            empty = True
-            for row in self.grid:
-                if row[0] == 1:
-                    empty = False
-                    break
-
-            if empty:
-                for row in self.grid:
-                        row.pop(0)
-                        row.append(0)
-            else:
-                break
 
     def getState(self):
-        self.removeBlankRowsAndColumns()
         state = ""
 
         for row in self.grid:
