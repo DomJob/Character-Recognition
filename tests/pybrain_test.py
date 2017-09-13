@@ -4,13 +4,10 @@ from pybrain.supervised.trainers import BackpropTrainer
 import operator, pickle
 
 
-
-
-
 # net = buildNetwork(1024, 15, 36)
 
-net = buildNetwork(1024, 100, 36)
-ds = SupervisedDataSet(1024, 36)
+net = buildNetwork(256, 15, 36)
+ds = SupervisedDataSet(256, 36)
 
 charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
