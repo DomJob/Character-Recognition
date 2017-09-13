@@ -25,7 +25,6 @@ class Grid:
 
             self.grid.append(row)
 
-
     def getState(self):
         state = ""
 
