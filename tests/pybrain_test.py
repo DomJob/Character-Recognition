@@ -1,18 +1,21 @@
 from pybrain.tools.shortcuts import buildNetwork
 from pybrain.datasets import SupervisedDataSet
-from pybrain.supervised.trainers import BackpropTrainer
-import operator, pickle
+from pybrain.supervised.trainers import *
+import pickle
 
 
-# net = buildNetwork(1024, 15, 36)
 
-net = buildNetwork(256, 15, 36)
+net = buildNetwork(256, 10, 36)
+#f = open('brain.p','rb')
+#net = pickle.load(f)
+
 ds = SupervisedDataSet(256, 36)
 
 charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 charsetLines = open('characters.txt', 'r').readlines()
 i = 0
+print("Loading dataset...")
 for line in charsetLines:
     outputLetter = line[0]
 
@@ -29,20 +32,21 @@ for line in charsetLines:
 
     input = tuple(pixels)
     output = tuple(output)
-
-
+    print(letterIndex, output)
 
     ds.addSample(input, output)
 
-trainer = BackpropTrainer(net, ds)
+print("Done")
+trainer = RPropMinusTrainer(net, learningrate=5, momentum=1, verbose=True)
+#trainer = BackpropTrainer(net, learningrate=0.01, momentum=0.5, verbose=True)
 
 err = 3
 
 
 
 while True:
-    err = trainer.train()
-    print(err)
+    err = trainer.trainOnDataset(ds)
+
 
     f = open('brain.p','wb')
     pickle.dump(net, f)
