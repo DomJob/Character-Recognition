@@ -5,7 +5,7 @@ from interface.button import Button
 
 class Surface:
     GRID_MARGIN = 25
-    SCREEN_SIZE = (640, 400)
+    SCREEN_SIZE = (640, 315)
     WINDOW_TITLE = "Détecteur de caractère - LesDominics"
 
     def __init__(self):
@@ -21,8 +21,9 @@ class Surface:
         pygame.display.set_caption(self.WINDOW_TITLE)
         self.surface = pygame.display.set_mode(self.SCREEN_SIZE)
 
+        # Elements
         self.grid = Grid(self.surface, (self.GRID_MARGIN, self.GRID_MARGIN))
-        self.resetButton = Button(self.surface, (25, 350), "Reset")
+        self.resetButton = Button(self.surface, (25, 275), "Reset")
 
     def getInput(self):
         for event in pygame.event.get():
