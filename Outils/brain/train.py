@@ -16,6 +16,7 @@ def trainBrain(name, brain):
         i+=1
 
 #centralBrain = Brain(6)
+"""
 brains = {
     "123ORM" : Brain(6),
     "LE0KZN" : Brain(6),
@@ -24,11 +25,15 @@ brains = {
     "78GP9U" : Brain(6),
     "JA64DS" : Brain(6)
 }
+"""
 
+brains = {
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" : Brain(36)
+}
 
 # centralBrain.load("../data/brains/Central.p")
-for name in brains:
-    brains[name].load("../data/brains/%s.p" % name)
+#for name in brains:
+#    brains[name].load("../data/brains/%s.p" % name)
 
 
 

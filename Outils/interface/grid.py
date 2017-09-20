@@ -46,9 +46,9 @@ class Grid:
         x, y = pygame.mouse.get_pos()
 
         if x<self.position[0] or x>=self.position[0]+self.PIXEL_SIZE*self.WIDTH:
-            return
+            return False
         if y<self.position[1] or y>=self.position[1]+self.PIXEL_SIZE*self.HEIGHT:
-            return
+            return False
 
         x -= self.position[0]
         y -= self.position[1]
@@ -57,6 +57,7 @@ class Grid:
         gridY = y // self.PIXEL_SIZE
 
         self.fillPixel(gridX, gridY)
+        return True
 
     def fillPixel(self, x, y):
         self.grid[y][x] = 1
