@@ -39,11 +39,21 @@ class Surface:
             if event.type == pygame.MOUSEMOTION and self.mouseDown:
                 self.mouseDragged()
             if event.type == pygame.KEYDOWN:
+                if event.key == K_TAB:
+                    state = self.grid.getState()
+
+                    fixedState = state
+
+                    self.grid.setState(fixedState)
+
                 if (event.key >= K_0 and event.key <= K_9) or (event.key >= K_a and event.key <= K_z):
                     keyPressed = chr(event.key)
                     keyPressed = keyPressed.upper()
 
-                    self.grid.saveState(keyPressed)
+                    #self.grid.saveState(keyPressed)
+
+                    self.grid.loadAverage(keyPressed)
+                    #pygame.image.save(self.surface, "./images/before/" + keyPressed + ".png")
 
     def mouseClick(self):
         self.mouseDragged()

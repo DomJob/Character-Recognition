@@ -1,4 +1,4 @@
-import pygame
+import pygame, time
 
 class Grid:
     WIDTH = 16
@@ -35,12 +35,32 @@ class Grid:
         return state
 
     def setState(self, pixelString):
-
+        self.reset()
         i = 0
         for row in range(self.WIDTH):
             for col in range(self.HEIGHT):
                 self.grid[row][col] = float(pixelString[i])
                 i+=1
+
+    def loadAverage(self, character):
+        characterLines = open('data/characters.txt', 'r').readlines()
+
+        averageState = [0] * 256
+        i = 0
+
+        for line in characterLines:
+            line = line.strip().split("\t")
+            if line[0] != character:
+                continue
+            inputPixelString = line[1]
+            pixelIndex = 0
+            for p in inputPixelString:
+                averageState[pixelIndex] += float(p)
+                pixelIndex += 1
+
+            i += 1
+        self.setState([total/i for total in averageState])
+
 
     def saveState(self, character):
         state = self.getState()
@@ -74,6 +94,21 @@ class Grid:
         self.grid[y][x] = 0
 
     def draw(self):
+
+        # Remplir les pixels
+
+        for y in range(self.HEIGHT):
+            for x in range(self.WIDTH):
+                pixel = 1 - float(self.grid[y][x])
+
+                rectX = self.position[0] + x * self.PIXEL_SIZE
+                rectY = self.position[1] + y * self.PIXEL_SIZE
+                size = self.PIXEL_SIZE
+
+
+                pygame.draw.rect(self.surface, (pixel * 255, pixel * 255, pixel * 255),
+                             (rectX, rectY, size, size), 0)
+
         # Dessiner la grille
 
         pygame.draw.rect(self.surface, self.GRID_COLOR,
@@ -96,16 +131,7 @@ class Grid:
 
             pygame.draw.line(self.surface, self.GRID_COLOR, (lineX1, lineY), (lineX2, lineY))
 
-        # Remplir les pixels
-
-        for y in range(self.HEIGHT):
-            for x in range(self.WIDTH):
-                pixel = self.grid[y][x]
-
-                rectX = self.position[0] + x * self.PIXEL_SIZE
-                rectY = self.position[1] + y * self.PIXEL_SIZE
-                size = self.PIXEL_SIZE
-
-                if pixel==1:
-                    pygame.draw.rect(self.surface, (0, 0, 0),
-                                 (rectX, rectY, size, size), 0)
+    def crop(self):
+        pass
+    def resize(self):
+        pass
