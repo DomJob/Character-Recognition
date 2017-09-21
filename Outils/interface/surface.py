@@ -26,6 +26,7 @@ class Surface:
         self.grid = Grid(self.surface, (self.GRID_MARGIN, self.GRID_MARGIN))
         self.resetButton = Button(self.surface, (25, 275), "Reset")
 
+
     def getInput(self):
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -52,7 +53,7 @@ class Surface:
 
     def mouseDragged(self):
         if self.grid.mouseDragged():
-            self.characterReader.read(self.grid.getState())
+            print(self.characterReader.read(self.grid.getState()))
 
 
     def display(self):

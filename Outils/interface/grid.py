@@ -30,9 +30,17 @@ class Grid:
 
         for row in self.grid:
             for pixel in row:
-                state += str(pixel)
+                state += str(round(pixel))
 
         return state
+
+    def setState(self, pixelString):
+
+        i = 0
+        for row in range(self.WIDTH):
+            for col in range(self.HEIGHT):
+                self.grid[row][col] = float(pixelString[i])
+                i+=1
 
     def saveState(self, character):
         state = self.getState()

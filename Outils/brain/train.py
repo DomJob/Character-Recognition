@@ -15,7 +15,6 @@ def trainBrain(name, brain):
             brain.save("../data/brains/%s.p" % name)
         i+=1
 
-#centralBrain = Brain(6)
 """
 brains = {
     "123ORM" : Brain(6),
@@ -28,12 +27,20 @@ brains = {
 """
 
 brains = {
-    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" : Brain(36)
+    "RKXYP4" : Brain(6),
+    "O0QCG6D9" : Brain(8),
+    "NMWVUH" : Brain(6),
+    "3EFB8A" : Brain(6),
+    "2ZS5" : Brain(4),
+    "1LIT7J" : Brain(6)
 }
 
-# centralBrain.load("../data/brains/Central.p")
-#for name in brains:
-#    brains[name].load("../data/brains/%s.p" % name)
+for name in brains:
+    brains[name].load("../data/brains/%s.p" % name)
+
+#brains = {
+#    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" : Brain(36)
+#}
 
 
 
@@ -46,24 +53,29 @@ for line in characterLines:
     outputLetter = line[0]
 
     #brainIndex = 0
+    brainCharset = None
+
     for charset in brains:
         if outputLetter in charset:
             outputLetterIndex = charset.index(outputLetter)
-            break
-        #brainIndex += 1
+            brainCharset = charset
+        else:
+            hashtagOutput = [0] * (len(charset) + 1)
+            hashtagOutput[-1] = 1
+            brains[charset].addToDataSet(inputPixelString, hashtagOutput)
 
-    #centralBrainOutput = [0.0] * 6
-    #centralBrainOutput[brainIndex] = 1.0
+    if brainCharset is None:
+        print(outputLetter, "break")
+        continue
 
-    subBrain = brains[charset]
-    subBrainOutput = [0.0] * len(charset)
+    subBrain = brains[brainCharset]
+    subBrainOutput = [0.0] * (len(brainCharset) + 1)
+
     subBrainOutput[outputLetterIndex] = 1.0
 
-    #centralBrain.addToDataSet(inputPixelString, centralBrainOutput)
     subBrain.addToDataSet(inputPixelString, subBrainOutput)
 
 
-#threading.Thread(target=trainBrain, args=["Central", centralBrain]).start()
 
 for charset in brains:
     brain = brains[charset]
