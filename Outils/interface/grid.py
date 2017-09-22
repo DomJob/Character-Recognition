@@ -1,4 +1,5 @@
-import pygame, time
+import pygame
+from PIL import Image
 
 class Grid:
     WIDTH = 16
@@ -30,7 +31,7 @@ class Grid:
 
         for row in self.grid:
             for pixel in row:
-                state += str(round(pixel))
+                state += str(round(int(pixel)))
 
         return state
 
@@ -132,6 +133,110 @@ class Grid:
             pygame.draw.line(self.surface, self.GRID_COLOR, (lineX1, lineY), (lineX2, lineY))
 
     def crop(self):
-        pass
+        while self.grid[0] == [0] * self.WIDTH:
+            self.grid.pop(0)
+            self.grid.append([0] * self.WIDTH)
+
+        while True:
+            empty = True
+            for row in self.grid:
+                if row[0] == 1:
+                    empty = False
+                    break
+
+            if empty:
+                for row in self.grid:
+                        row.pop(0)
+                        row.append(0)
+            else:
+                break
+
+    def getSize(self):
+        # Determiner les dimensions
+        height = 0
+        width = 0
+
+        i = 0
+        for c in range(self.HEIGHT):
+            i+=1
+            row = self.grid[c]
+            line = []
+
+            for r in range(self.WIDTH):
+                pixel = self.grid[r][c]
+                line.append(pixel)
+
+            if line != [0] * self.WIDTH:
+                width = i
+
+        i = 0
+        for row in self.grid:
+            i += 1
+            if row != [0] * self.WIDTH:
+                height = i
+
+        return width, height
+
     def resize(self):
-        pass
+        self.crop()
+        width, height = self.getSize()
+
+        if width > height:
+            centerHorizontally = False
+            newSize = (16, height * int(16/width))
+        else:
+            centerHorizontally = True
+            newSize = (width * int(16/height), 16)
+
+        state = self.getState()
+
+        im = Image.new("1", (width, height), 1)
+
+        for y in range(0,height):
+            for x in range(0,width):
+                pixel = "0" if str(round(self.grid[y][x]))=="1" else "1"
+
+                im.putpixel((x, y), int(pixel))
+
+        im = im.resize(newSize)
+
+        newState = ""
+
+        for y in range(16):
+            for x in range(16):
+                try:
+                    newState += "0" if im.getpixel((x,y)) == 1 else "1"
+                except:
+                    newState += "0"
+
+        self.reset()
+        self.setState(newState)
+
+        if centerHorizontally:
+            self.centerHorizontally()
+        else:
+            self.centerVertically()
+
+    def centerHorizontally(self):
+        width, height = self.getSize()
+
+        blankSides = (16 - width) // 2
+        tmpGrid = self.grid
+
+        self.reset()
+
+        for y in range(0,height):
+            for x in range(0,width):
+                self.grid[y][x+blankSides] = str(int(tmpGrid[y][x]))
+
+    def centerVertically(self):
+        width, height = self.getSize()
+
+        blankSides = (16 - height) // 2
+        tmpGrid = self.grid
+
+        self.reset()
+
+        for y in range(0,height):
+            for x in range(0,width):
+                self.grid[y+blankSides][x] = str(int(tmpGrid[y][x]))
