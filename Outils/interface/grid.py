@@ -64,6 +64,7 @@ class Grid:
 
 
     def saveState(self, character):
+        self.resize()
         state = self.getState()
 
         file = open('data/characters.txt','a')

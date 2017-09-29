@@ -46,9 +46,9 @@ class Surface:
                     keyPressed = chr(event.key)
                     keyPressed = keyPressed.upper()
 
-                    #self.grid.saveState(keyPressed)
+                    self.grid.saveState(keyPressed)
 
-                    self.grid.loadAverage(keyPressed)
+                    #self.grid.loadAverage(keyPressed)
                     #pygame.image.save(self.surface, "./images/after/" + keyPressed + ".png")
 
     def mouseClick(self):
@@ -59,7 +59,8 @@ class Surface:
 
     def mouseDragged(self):
         if self.grid.mouseDragged():
-            print(self.characterReader.read(self.grid.getState()))
+            pass
+            #print(self.characterReader.read(self.grid.getState()))
 
 
     def display(self):
