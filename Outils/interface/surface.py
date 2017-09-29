@@ -49,7 +49,7 @@ class Surface:
                     #self.grid.saveState(keyPressed)
 
                     self.grid.loadAverage(keyPressed)
-                    pygame.image.save(self.surface, "./images/after/" + keyPressed + ".png")
+                    #pygame.image.save(self.surface, "./images/after/" + keyPressed + ".png")
 
     def mouseClick(self):
         self.mouseDragged()

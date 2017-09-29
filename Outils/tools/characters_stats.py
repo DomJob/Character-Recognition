@@ -1,6 +1,6 @@
 import operator
 
-lines = open('data/characters.txt','r').readlines()
+lines = open('../data/characters.txt','r').readlines()
 
 nb = {}
 

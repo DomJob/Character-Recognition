@@ -5,8 +5,8 @@ import pickle
 
 class Brain:
     def __init__(self, nbOutputs):
-        self.net = buildNetwork(256, 10, nbOutputs+1)
-        self.ds = SupervisedDataSet(256, nbOutputs+1)
+        self.net = buildNetwork(256, 25, nbOutputs)
+        self.ds = SupervisedDataSet(256, nbOutputs)
 
     def load(self, file):
         try:

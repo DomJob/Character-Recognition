@@ -181,12 +181,12 @@ class Grid:
         self.crop()
         width, height = self.getSize()
 
-        if width > height:
-            centerHorizontally = False
-            newSize = (16, height * int(16/width))
-        else:
-            centerHorizontally = True
-            newSize = (width * int(16/height), 16)
+        #if width > height:
+        #    centerHorizontally = False
+        #    newSize = (16, height * int(16/width))
+        #else:
+        centerHorizontally = True
+        newSize = (width * int(16/height), 16)
 
         state = self.getState()
 

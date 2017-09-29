@@ -10,12 +10,12 @@ class CharacterReader:
         for charset in self.brains:
             output = self.brains[charset].activate(pixelString)
             # print(charset, output )
-            charset += "#"
+            #charset += "#"
             for i in range(len(charset)):
                 char = charset[i]
                 prob = output[i]
-                if char == "#":
-                    break
+                #if char == "#":
+                #    break
                 probs[char] = (1 - prob) ** 2
 
         sorted_probs = sorted(probs.items(), key=operator.itemgetter(1))
