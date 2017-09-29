@@ -1,6 +1,6 @@
 from interface.surface import Surface
-from brain.brain import Brain
-from brain.characterReader import CharacterReader
+#from brain.brain import Brain
+#from brain.characterReader import CharacterReader
 
 '''
 brains = {
@@ -12,7 +12,7 @@ brains = {
     "JA64DS" : Brain(6)
 }
 '''
-
+'''
 brains = {
     #"1LIT7J" : Brain(6),
     #"2ZS5" : Brain(6),
@@ -30,7 +30,7 @@ for name in brains:
 
 
 characterReader = CharacterReader(brains)
+'''
 
-
-surface = Surface(characterReader)
+surface = Surface(None)
 surface.display()
