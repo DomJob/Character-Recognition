@@ -59,8 +59,7 @@ class Surface:
 
     def mouseDragged(self):
         if self.grid.mouseDragged():
-            pass
-            #print(self.characterReader.read(self.grid.getState()))
+            print(self.characterReader.read(self.grid.getState()))
 
 
     def display(self):

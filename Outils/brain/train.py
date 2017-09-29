@@ -17,11 +17,11 @@ def trainBrain(name, brain):
 
 brains = {
     "123ORM" : Brain(6),
-    "LE0KZN" : Brain(6),
+    "4E0KZN" : Brain(6),
     "IFQXHW" : Brain(6),
     "TBCY5V" : Brain(6),
     "78GP9U" : Brain(6),
-    "JA64DS" : Brain(6)
+    "JA6LDS" : Brain(6)
 }
 
 """
