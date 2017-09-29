@@ -181,12 +181,10 @@ class Grid:
     def resize(self):
         self.crop()
         width, height = self.getSize()
+        if height == 16:
+            self.centerHorizontally()
+            return
 
-        #if width > height:
-        #    centerHorizontally = False
-        #    newSize = (16, height * int(16/width))
-        #else:
-        centerHorizontally = True
         newSize = (width * int(16/height), 16)
 
         state = self.getState()
@@ -213,10 +211,7 @@ class Grid:
         self.reset()
         self.setState(newState)
 
-        if centerHorizontally:
-            self.centerHorizontally()
-        else:
-            self.centerVertically()
+        self.centerHorizontally()
 
     def centerHorizontally(self):
         width, height = self.getSize()
@@ -230,14 +225,3 @@ class Grid:
             for x in range(0,width):
                 self.grid[y][x+blankSides] = str(int(tmpGrid[y][x]))
 
-    def centerVertically(self):
-        width, height = self.getSize()
-
-        blankSides = (16 - height) // 2
-        tmpGrid = self.grid
-
-        self.reset()
-
-        for y in range(0,height):
-            for x in range(0,width):
-                self.grid[y+blankSides][x] = str(int(tmpGrid[y][x]))
