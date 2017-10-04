@@ -5,15 +5,17 @@ import time
 
 
 brains = {
-    "1LIT7J" : Brain(6),
-    "2ZS5" : Brain(6),
-    "RKXYP4" : Brain(6),
-    "NMWVUH" : Brain(6),
-    "3EFB8A" : Brain(6),
-    "O0QCG6D9" : Brain(6)
+    "123ORM" : Brain(6),
+    "4E0KZN" : Brain(6),
+    "IFQXHW" : Brain(6),
+    "TBCY5V" : Brain(6),
+    "78GP9U" : Brain(6),
+    "JA6LDS" : Brain(6)
 }
+
 characterReader = CharacterReader(brains)
 
+charCount = {}
 characters1 = {}
 characters2 = {}
 characters3 = {}
@@ -42,7 +44,8 @@ if True:
         expected = line[0]
         result = characterReader.read(inputPixelString)
 
-        if expected not in characters1:
+        if expected not in charCount:
+            charCount[expected] = 0
             characters1[expected] = 0
             characters2[expected] = 0
             characters3[expected] = 0
@@ -52,6 +55,8 @@ if True:
         first = result[0][0]
         second = result[1][0]
         third = result[2][0]
+
+        charCount[expected] += 1
 
         if first==expected:
             correct += 1
@@ -85,6 +90,15 @@ if True:
     print("Third   : %d/%d (%.2f%%)" % (thirds, total, 100*thirds/total))
     print("Failed  : %d/%d (%.2f%%)" % (failed, total, 100*failed/total))
 
-    print(characters1, characters2, characters3 )
-    time.sleep(280)
+    print("Char\tCount\t1er\t2eme\t3eme\t1er %\t2eme %\t3eme %")
+    for char in "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+        print("%s\t%d\t%d\t%d\t%d\t%0.2f\t%0.2f\t%0.2f" % (char,
+                                                          charCount[char],
+                                                          characters1[char], characters2[char], characters3[char],
+                                                          100.0*characters1[char]/charCount[char],
+                                                          100.0*characters2[char]/charCount[char],
+                                                          100.0*characters3[char]/charCount[char]))
+
+
+
 

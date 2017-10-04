@@ -24,17 +24,6 @@ brains = {
     "JA6LDS" : Brain(6)
 }
 
-"""
-brains = {
-    "RKXYP4" : Brain(6),
-    "O0QCG6D9" : Brain(8),
-    "NMWVUH" : Brain(6),
-    "3EFB8A" : Brain(6),
-    "2ZS5" : Brain(4),
-    "1LIT7J" : Brain(6)
-}
-"""
-
 for name in brains:
     brains[name].load("../data/brains/%s.p" % name)
 

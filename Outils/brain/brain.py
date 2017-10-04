@@ -1,11 +1,13 @@
 from pybrain.tools.shortcuts import buildNetwork
 from pybrain.datasets import SupervisedDataSet
 from pybrain.supervised.trainers import RPropMinusTrainer
+from pybrain.supervised.trainers import BackpropTrainer
+
 import pickle
 
 class Brain:
     def __init__(self, nbOutputs):
-        self.net = buildNetwork(256, 25, nbOutputs)
+        self.net = buildNetwork(256, 25, nbOutputs, bias=True)
         self.ds = SupervisedDataSet(256, nbOutputs)
 
     def load(self, file):
@@ -14,7 +16,7 @@ class Brain:
             self.net = pickle.load(f)
             f.close()
         except:
-            print("No brain file found")
+            print("No brain file found: %s" % file)
             pass
 
     def save(self, file):
@@ -30,10 +32,11 @@ class Brain:
 
     def loadTrainer(self):
         self.trainer = RPropMinusTrainer(self.net, learningrate=5, momentum=1, verbose=True)
+        #self.trainer = BackpropTrainer(self.net, self.ds)
 
     def train(self):
         self.trainer.trainOnDataset(self.ds)
-
+        #return self.trainer.train()
 
     def activate(self, pixelString):
         inputs = [float(p) for p in pixelString]
