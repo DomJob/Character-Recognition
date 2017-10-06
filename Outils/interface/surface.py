@@ -8,9 +8,8 @@ class Surface:
     SCREEN_SIZE = (640, 315)
     WINDOW_TITLE = "Détecteur de caractère - LesDominics"
 
-    def __init__(self, characterReader):
+    def __init__(self):
         self.mouseDown = False
-        self.characterReader = characterReader
 
         pygame.font.init()
 
@@ -46,9 +45,9 @@ class Surface:
                     keyPressed = chr(event.key)
                     keyPressed = keyPressed.upper()
 
-                    #self.grid.saveState(keyPressed)
+                    self.grid.saveState(keyPressed)
 
-                    self.grid.loadAverage(keyPressed)
+                    #self.grid.loadAverage(keyPressed)
                     #pygame.image.save(self.surface, "./images/after/" + keyPressed + ".png")
 
     def mouseClick(self):
@@ -58,8 +57,7 @@ class Surface:
             self.grid.reset()
 
     def mouseDragged(self):
-        if self.grid.mouseDragged():
-            print(self.characterReader.read(self.grid.getState()))
+        self.grid.mouseDragged()
 
 
     def display(self):
