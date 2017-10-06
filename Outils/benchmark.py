@@ -14,6 +14,8 @@ brains = {
 }
 
 characterReader = CharacterReader(brains)
+characterLines = open('data/characters_unknown.txt', 'r').readlines()
+#characterLines = open('data/characters.txt', 'r').readlines()
 
 charCount = {}
 characters1 = {}
@@ -28,7 +30,7 @@ if True:
 
     characterReader = CharacterReader(brains)
 
-    characterLines = open('data/characters.txt', 'r').readlines()
+
 
     total = 1.0
     correct = 0.0
@@ -84,17 +86,18 @@ if True:
     f.write(line)
     f.close()
 
+    """
     print("Good    : %d/%d (%.2f%%)" % (good, total, 100*good/total))
     print("First   : %d/%d (%.2f%%)" % (correct, total, 100*correct/total))
     print("Second  : %d/%d (%.2f%%)" % (seconds, total, 100*seconds/total))
     print("Third   : %d/%d (%.2f%%)" % (thirds, total, 100*thirds/total))
     print("Failed  : %d/%d (%.2f%%)" % (failed, total, 100*failed/total))
-
-    print("Char\tCount\t1er\t2eme\t3eme\t1er %\t2eme %\t3eme %")
+    """
+    open('benchmark.txt','w').write("Char\t1er %\t2eme %\t3eme %\n")
     for char in "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-        print("%s\t%d\t%d\t%d\t%d\t%0.2f\t%0.2f\t%0.2f" % (char,
-                                                          charCount[char],
-                                                          characters1[char], characters2[char], characters3[char],
+        open('benchmark.txt','a').write("%s\t%0.2f\t%0.2f\t%0.2f\n" % (char,
+                                                          #charCount[char],
+                                                          #characters1[char], characters2[char], characters3[char],
                                                           100.0*characters1[char]/charCount[char],
                                                           100.0*characters2[char]/charCount[char],
                                                           100.0*characters3[char]/charCount[char]))
