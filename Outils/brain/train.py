@@ -7,8 +7,7 @@ def trainBrain(name, brain):
     brain.loadTrainer()
 
     while True:
-        print("Training brain %s" % (name.ljust(10)), end="\t")
-        brain.train()
+        print(name.ljust(10), brain.train())
 
         if i % 10 == 0:
             print("Saving brain %s" % (name))
@@ -27,13 +26,8 @@ brains = {
 for name in brains:
     brains[name].load("../data/brains/%s.p" % name)
 
-#brains = {
-#    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" : Brain(36)
-#}
 
-
-
-characterLines = open('../data/characters_unknown.txt', 'r').readlines()
+characterLines = open('../data/characters.txt', 'r').readlines()
 
 for line in characterLines:
     line = line.strip().split("\t")

@@ -14,8 +14,8 @@ brains = {
 }
 
 characterReader = CharacterReader(brains)
-characterLines = open('data/characters_unknown.txt', 'r').readlines()
-#characterLines = open('data/characters.txt', 'r').readlines()
+#characterLines = open('data/characters_unknown.txt', 'r').readlines()
+characterLines = open('data/characters.txt', 'r').readlines()
 
 charCount = {}
 characters1 = {}

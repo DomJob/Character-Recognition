@@ -24,4 +24,4 @@ for line in charLines:
     print("Expected :", expectedLetter)
     
     output = net.sim(input)
-    print("Output   :", output)
+    print("Output   :", output[0].tolist())
