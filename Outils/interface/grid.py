@@ -43,8 +43,8 @@ class Grid:
                 self.grid[row][col] = float(pixelString[i])
                 i+=1
 
-    def loadAverage(self, character):
-        characterLines = open('data/characters.txt', 'r').readlines()
+    def loadAverage(self, character, file='data/characters.txt'):
+        characterLines = open(file, 'r').readlines()
 
         averageState = [0] * 256
         i = 0

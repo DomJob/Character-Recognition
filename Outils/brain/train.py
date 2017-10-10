@@ -33,7 +33,7 @@ for name in brains:
 
 
 
-characterLines = open('../data/characters.txt', 'r').readlines()
+characterLines = open('../data/characters_unknown.txt', 'r').readlines()
 
 for line in characterLines:
     line = line.strip().split("\t")
