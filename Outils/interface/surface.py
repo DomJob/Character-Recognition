@@ -27,7 +27,7 @@ class Surface:
         # Elements
         self.grid = Grid(self.surface, (self.GRID_MARGIN, self.GRID_MARGIN))
         self.resetButton = Button(self.surface, (25, 275), "Reset")
-        self.char_list = CharList(self.surface, (300, 25))
+        self.char_list = CharList(self.surface, (300, self.GRID_MARGIN))
 
     def getInput(self):
         for event in pygame.event.get():
