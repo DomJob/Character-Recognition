@@ -1,8 +1,8 @@
 import pygame, sys
 from pygame.locals import *
-from Outils.interface.grid import Grid
-from Outils.interface.button import Button
-from Outils.interface.proposedCharList import CharList
+from interface.grid import Grid
+from interface.button import Button
+from interface.proposedCharList import CharList
 
 
 class Surface:

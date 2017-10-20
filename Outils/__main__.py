@@ -3,23 +3,23 @@ from brain.brain import Brain
 from brain.characterReader import CharacterReader
 
 
-brains = {
-    "123ORM" : Brain(6),
-    "4E0KZN" : Brain(6),
-    "IFQXHW" : Brain(6),
-    "TBCY5V" : Brain(6),
-    "78GP9U" : Brain(6),
-    "JA6LDS" : Brain(6)
-}
+brains = [
+    Brain("0ODGCQ"),
+    Brain("1IJ3B8"),
+    Brain("2Z5SEF"),
+    Brain("AHTKXW"),
+    Brain("MNVUY7"),
+    Brain("469LPR")
+]
+centralBrain = Brain("Central")
+centralBrain.load("data/brains/Central.p")
 
-characterReader = CharacterReader(brains)
+for brain in brains:
+    brain.load("data/brains/%s.p" % brain.charset)
 
 
-for name in brains:
-    brains[name].load("data12/brains/%s.p" % name)
 
-
-characterReader = CharacterReader(brains)
+characterReader = CharacterReader(brains, centralBrain)
 
 surface = Surface(characterReader)
 surface.display()
