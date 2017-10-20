@@ -35,9 +35,11 @@ for name in brains:
 characterLines = open('data/characters_unknown.txt', 'r').readlines()
 #characterLines = open('data/characters.txt', 'r').readlines()
 
-o=0
+o = -1
 
 for line in characterLines:
+    o += 1
+    print()
     line = line.strip().split("\t")
 
     inputPixelString = line[1]
@@ -53,8 +55,12 @@ for line in characterLines:
             maxScore = centralOutput[i]
             maxI = i
     
+    
+    
     brainCharset = charsets[maxI]
     networkOutput = brains[brainCharset].activate(inputPixelString)
+    
+    print(o, expected, brainCharset)
     
     if expected not in brainCharset:
         badNetwork += 1
@@ -70,28 +76,30 @@ for line in characterLines:
             maxScore = networkOutput[i]
             maxI = i
     
-    if maxScore < 0:
-        print(o, expected, "Score: ",maxScore," - Most likely bad network ("+brainCharset+") Backup...")
+    print(o, networkOutput)
+    if maxScore < -0.9:
+        print(o, expected, "Score: ",maxScore," Best char: ", brainCharset[maxI] ," - Most likely bad network ("+brainCharset+") Backup...")
+        
         # ect
         
         if expected not in brainCharset: 
             badNetworkDetected += 1
         else:
             badNetworkDetectedFP += 1
-        
-        print()
+
         continue
+    
     
     detectedCharacter = brainCharset[maxI]
         
     if detectedCharacter != expected:
         bad += 1
         print(o, "Expected:", expected, "Detected:", detectedCharacter, maxScore)
-        print()
     else:
+        print(o, "Expected:", expected, "Detected:", detectedCharacter, maxScore)
         correct += 1
     #    print(o, "Got it! ", expected, detectedCharacter)
-    o += 1
+    
     
     
 print("Bad network:     ", badNetwork)

@@ -2,16 +2,6 @@ from brain.brain import Brain
 from brain.characterReader import CharacterReader
 import time
 
-'''
-brains = {
-    "123ORM" : Brain(6),
-    "4E0KZN" : Brain(6),
-    "IFQXHW" : Brain(6),
-    "TBCY5V" : Brain(6),
-    "78GP9U" : Brain(6),
-    "JA6LDS" : Brain(6)
-}'''
-
 brains = {
     "0ODGCQ" : Brain(6),
     "1IJ3B8" : Brain(6),
@@ -22,8 +12,8 @@ brains = {
 }
 
 characterReader = CharacterReader(brains)
-#characterLines = open('data/characters_unknown.txt', 'r').readlines()
-characterLines = open('data/characters.txt', 'r').readlines()
+characterLines = open('data/characters_unknown.txt', 'r').readlines()
+#characterLines = open('data/characters.txt', 'r').readlines()
 
 charCount = {}
 characters1 = {}
