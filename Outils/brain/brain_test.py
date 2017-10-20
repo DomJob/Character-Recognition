@@ -1,37 +1,11 @@
-from ..brain.brain import Brain
-import operator
+from brain import Brain
 
-#centralBrain = Brain(6)
-brains = {
-    "123ORM" : Brain(6),
-    "LE0KZN" : Brain(6),
-    "IFQXHW" : Brain(6),
-    "TBCY5V" : Brain(6),
-    "78GP9U" : Brain(6),
-    "JA64DS" : Brain(6)
-}
+charset = 'AHTKXW'
 
-#centralBrain = Brain(6)
-#centralBrain.load("../data/brainssimilaires/central.p")
-for name in brains:
-    brains[name].load("../data/brainssimilaires/%s.p" % name)
+brain = Brain(6)
+brain.load("../data/brains/"+charset+".p")
 
-character = "0001111110000000000100001110000000010000001000000001000000010000000110000011000000001000001000000000000001000000000000001100000000000001100000000000001100000000000001100000000000000110000000000000000111100000000000000000000000000000000000000000000000000000"
 
-#print(centralBrain.activate(character))
+pixelString = '0000001111111110000111100000000000110000000000000110000000000000010000000000000001000000000000001100000000000000110000000000000011000000000000000110000000000000001100000000000000010000000000000000100000000000000001000000000000000111000000000000000111111110'
 
-probs = {}
-
-for charset in brains:
-    output = brains[charset].activate(character)
-    #print(charset, output )
-
-    for i in range(len(charset)):
-        char = charset[i]
-        prob = output[i]
-
-        probs[char] = (1-prob)**2
-
-sorted_probs = sorted(probs.items(), key=operator.itemgetter(1))
-for c in sorted_probs[::-1]:
-    print(c[0], c[1])
+print(charset, brain.activate(pixelString))

@@ -7,8 +7,7 @@ def trainBrain(name, brain):
     brain.loadTrainer()
 
     while True:
-        print("Training brain %s" % (name.ljust(10)), end="\t")
-        brain.train()
+        print(name.ljust(10), brain.train())
 
         if i % 10 == 0:
             print("Saving brain %s" % (name))
@@ -16,24 +15,22 @@ def trainBrain(name, brain):
         i+=1
 
 brains = {
-    "123ORM" : Brain(6),
-    "4E0KZN" : Brain(6),
-    "IFQXHW" : Brain(6),
-    "TBCY5V" : Brain(6),
-    "78GP9U" : Brain(6),
-    "JA6LDS" : Brain(6)
+    "0ODGCQ" : Brain(6),
+    "1IJ3B8" : Brain(6),
+    "2Z5SEF" : Brain(6),
+    "AHTKXW" : Brain(6),
+    "MNVUY7" : Brain(6),
+    "469LPR" : Brain(6)
 }
+
 
 for name in brains:
     brains[name].load("../data/brains/%s.p" % name)
 
-#brains = {
-#    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ" : Brain(36)
-#}
-
-
 
 characterLines = open('../data/characters.txt', 'r').readlines()
+
+print("Loading samples")
 
 for line in characterLines:
     line = line.strip().split("\t")
@@ -52,19 +49,26 @@ for line in characterLines:
             #hashtagOutput = [0] * (len(charset) + 1)
             #hashtagOutput[-1] = 1
             #brains[charset].addToDataSet(inputPixelString, hashtagOutput)
-
-    if brainCharset is None:
-        print(outputLetter, "break")
+    
+    
+    #for name in brains:
+    #    if name == brainCharset:
+    #        continue
+    #    subBrain = brains[name]
+    #    subBrain.addToDataSet(inputPixelString, [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0])
+    
+    if brainCharset == None:
         continue
-
+    
     subBrain = brains[brainCharset]
-    subBrainOutput = [0.0] * (len(brainCharset) )
-
+    
+    subBrainOutput = [-1.0] * (len(brainCharset) )
     subBrainOutput[outputLetterIndex] = 1.0
 
     subBrain.addToDataSet(inputPixelString, subBrainOutput)
 
 
+print("Starting training")
 
 for charset in brains:
     brain = brains[charset]

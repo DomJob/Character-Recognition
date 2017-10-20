@@ -1,7 +1,9 @@
 import pygame, sys
 from pygame.locals import *
-from interface.grid import Grid
-from interface.button import Button
+from Outils.interface.grid import Grid
+from Outils.interface.button import Button
+from Outils.interface.proposedCharList import CharList
+
 
 class Surface:
     GRID_MARGIN = 25
@@ -25,7 +27,7 @@ class Surface:
         # Elements
         self.grid = Grid(self.surface, (self.GRID_MARGIN, self.GRID_MARGIN))
         self.resetButton = Button(self.surface, (25, 275), "Reset")
-
+        self.char_list = CharList(self.surface, (300, self.GRID_MARGIN))
 
     def getInput(self):
         for event in pygame.event.get():
@@ -56,9 +58,11 @@ class Surface:
 
         if self.resetButton.isClicked():
             self.grid.reset()
+            self.char_list.clean()
 
     def mouseDragged(self):
         if self.grid.mouseDragged():
+            self.char_list.get_result(self.characterReader.read(self.grid.getState()))
             print(self.characterReader.read(self.grid.getState()))
 
 
@@ -68,6 +72,7 @@ class Surface:
 
             self.grid.draw()
             self.resetButton.draw()
+            self.char_list.draw()
 
             pygame.display.flip()
             self.getInput()
