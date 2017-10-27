@@ -22,9 +22,7 @@ class CharacterReader:
                 
         letters.sort(key=operator.itemgetter(1), reverse=True)
         
-        return letters
-        
- 
+        return letters[:6]
         
     def getCharset(self, pixelString):
         networkOutput = self.centralBrain.sortOutputs(pixelString)
@@ -34,20 +32,27 @@ class CharacterReader:
             charsets.append( (self.brains[index].charset, score) )
         charsets.sort(key=operator.itemgetter(1), reverse=True)
         
-        return charsets
+        return charsets[0][0]
         
     def read(self, pixelString):
-        networkOutput = self.centralBrain.sortOutputs(pixelString)
+        charset = self.getCharset(pixelString)
+
+        for brain in self.brains:
+            if brain.charset == charset:
+                goodBrain = brain
+                break
         
-        brain = self.brains[ networkOutput[0][0] ]
-        charset = brain.charset
-        
-        outputs = brain.sortOutputs(pixelString)
+        brainOutput = brain.sortOutputs(pixelString)
         
         letters = []
-        for index, score in outputs:
+        
+        for index, score in brainOutput:
             letter = brain.charset[index]
             letters.append( (letter, score) )
+            
         letters.sort(key=operator.itemgetter(1), reverse=True)
+        
+        if letters[0][1] < self.FAILURE_TRESHOLD:
+            return self.backupRead(pixelString)
         
         return letters
