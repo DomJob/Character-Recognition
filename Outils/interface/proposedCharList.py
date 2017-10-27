@@ -17,7 +17,7 @@ class CharList:
     NUMBER_OF_CELLS = 7
     LIST_TITLE_1 = "Caractères"
     LIST_TITLE_2 = "possibles"
-    ERROR_MESSAGE = "Caractère inconnue"
+    ERROR_MESSAGE = "Caractère inconnu"
     ALERT_MESSAGE = "Veuillez dessiner un caractère"
     MARGIN = 5
     ANY_CHAR = "  "
@@ -95,7 +95,6 @@ class CharList:
             stack = 0
             for result in results:
                 for string in result:
-                    print(string)
                     self.text[stack] = string
                     break
                 stack += 1

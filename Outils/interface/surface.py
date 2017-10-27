@@ -66,7 +66,7 @@ class Surface:
             self.grid.resize()
             resizedState = self.grid.getState()
             self.grid.setState(state)
-            
+                
             if self.characterReader.readFailed(resizedState):
                 self.char_list.get_result(None)
             else:
