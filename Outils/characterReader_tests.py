@@ -31,5 +31,5 @@ for line in characterLines:
         continue
     
     read = characterReader.read(pixelString)
-    
-    print(expected, read[:3])
+    if read[0][0] != expected and read[1][0] != expected:
+        print(expected, read[:3])
