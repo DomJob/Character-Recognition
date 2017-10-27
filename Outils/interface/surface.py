@@ -62,8 +62,16 @@ class Surface:
 
     def mouseDragged(self):
         if self.grid.mouseDragged():
-            self.char_list.get_result(self.characterReader.read(self.grid.getState()))
-            print(self.characterReader.read(self.grid.getState()))
+            state = self.grid.getState()
+            self.grid.resize()
+            resizedState = self.grid.getState()
+            self.grid.setState(state)
+            
+            if self.characterReader.readFailed(resizedState):
+                self.char_list.get_result(None)
+            else:
+                results = self.characterReader.read(resizedState)
+                self.char_list.get_result(results)
 
 
     def display(self):
