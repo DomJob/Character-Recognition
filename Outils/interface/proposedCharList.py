@@ -17,6 +17,8 @@ class CharList:
     NUMBER_OF_CELLS = 7
     LIST_TITLE_1 = "Caractères"
     LIST_TITLE_2 = "possibles"
+    ERROR_MESSAGE = "Caractère inconnue"
+    ALERT_MESSAGE = "Veuillez dessiner un caractère"
     MARGIN = 5
     ANY_CHAR = "  "
 
@@ -29,10 +31,23 @@ class CharList:
         self.title_font = pygame.font.SysFont(self.DATA_FONT, self.TITLE_FONT_SIZE)
         self.title_width_1, self.title_height_1 = self.title_font.size(self.LIST_TITLE_1)
         self.title_width_2, self.title_height_2 = self.title_font.size(self.LIST_TITLE_2)
+        self.message_font = pygame.font.SysFont(self.DATA_FONT, self.DATA_FONT_SIZE)
 
     def draw(self):
         self.draw_header()
-        self.draw_list()
+        if self.text[0] is None:
+            self.draw_message(self.ERROR_MESSAGE)
+        elif self.text[0] == self.EMPTY:
+            self.draw_message(self.ALERT_MESSAGE)
+        else:
+            self.draw_list()
+
+    def draw_message(self, message):
+        text_x = self.position[0]
+        text_y = self.position[1] + (self.title_height_1 * 2) + self.MARGIN
+
+        text_surface = self.message_font.render(message, False, (0, 0, 0))
+        self.surface.blit(text_surface, (text_x, text_y))
 
     def draw_header(self):
         text_x = self.position[0]
@@ -74,14 +89,16 @@ class CharList:
             y_position += self.HEIGHT - 1
 
     def get_result(self, results):
-        stack = 0
-        for result in results:
-            for string in result:
-                print(string)
-                self.text[stack] = string
-                self.draw()
-                break
-            stack += 1
+        if results is None:
+            self.text[0] = None
+        else:
+            stack = 0
+            for result in results:
+                for string in result:
+                    print(string)
+                    self.text[stack] = string
+                    break
+                stack += 1
 
     def clean(self):
         self.text = [self.EMPTY] * self.NUMBER_OF_CELLS
