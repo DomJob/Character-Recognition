@@ -53,7 +53,7 @@ class CharList:
         text_x = self.position[0]
         text_y = self.position[1] + 3
 
-        text_surface = self.title_font.render(self.LIST_TITLE_1, False, (0, 0, 0))
+        text_surface = self.title_font.render(self.LIST_TITLE_1, True, (0, 0, 0))
         self.surface.blit(text_surface, (text_x, text_y))
 
         if self.title_width_1 >= self.title_width_2:
@@ -63,7 +63,7 @@ class CharList:
             text_2_x = self.position[0] + self.title_width_2/2 - self.title_width_1/2
             text_y = self.position[1] + 3 + self.title_height_1
 
-        text_surface = self.title_font.render(self.LIST_TITLE_2, False, (0, 0, 0))
+        text_surface = self.title_font.render(self.LIST_TITLE_2, True, (0, 0, 0))
         self.surface.blit(text_surface, (text_2_x, text_y))
 
     def draw_list(self):

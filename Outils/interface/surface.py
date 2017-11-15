@@ -7,7 +7,7 @@ from interface.proposedCharList import CharList
 
 class Surface:
     GRID_MARGIN = 25
-    SCREEN_SIZE = (640, 315)
+    SCREEN_SIZE = (500, 315)
     WINDOW_TITLE = "Détecteur de caractère - LesDominics"
 
     def __init__(self, characterReader):
