@@ -47,10 +47,9 @@ class Surface:
                 if (event.key >= K_0 and event.key <= K_9) or (event.key >= K_a and event.key <= K_z):
                     keyPressed = chr(event.key)
                     keyPressed = keyPressed.upper()
-
-                    #self.grid.saveState(keyPressed)
-
-                    self.grid.loadAverage(keyPressed)
+                    self.grid.saveState(keyPressed)
+                    
+                    #self.grid.loadAverage(keyPressed)
                     #pygame.image.save(self.surface, "./images/after/" + keyPressed + ".png")
 
     def mouseClick(self):
