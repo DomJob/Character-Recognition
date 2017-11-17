@@ -38,24 +38,13 @@ for line in characterLines:
     inputPixelString = line[1]
     outputLetter = line[0]
 
-    #brainIndex = 0
     brainCharset = None
 
     for charset in brains:
         if outputLetter in charset:
             outputLetterIndex = charset.index(outputLetter)
             brainCharset = charset
-        #else:
-            #hashtagOutput = [0] * (len(charset) + 1)
-            #hashtagOutput[-1] = 1
-            #brains[charset].addToDataSet(inputPixelString, hashtagOutput)
-    
-    
-    #for name in brains:
-    #    if name == brainCharset:
-    #        continue
-    #    subBrain = brains[name]
-    #    subBrain.addToDataSet(inputPixelString, [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0])
+
     
     if brainCharset == None:
         continue
