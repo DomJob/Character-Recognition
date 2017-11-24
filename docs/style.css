@@ -53,3 +53,10 @@ text-align: right;
     margin-left: 3%;
     margin-right: 3%;
 }
+
+#text a{
+    text-decoration: none;
+}
+#text a:hover{
+    font-weight: bold;
+}
