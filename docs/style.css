@@ -7,16 +7,18 @@ body{
 
 #header{
     padding: 3%;
+    border-radius: 15px;
     background-color: #D17427; 
     background: -moz-linear-gradient(#D68440, #CD6814); 
     background: linear-gradient(#D68440, #CD6814);
 }
 
-h1{
+#header h1{
     color: white;
 }
 
 #body2{
+    border-radius: 15px;
     background-color: white;
     padding: 1%;
 }
@@ -25,7 +27,7 @@ h1{
 #navcontainer ul
 {
 margin: 0;
-padding: 0;
+padding: 1%;
 list-style-type: none;
 text-align: right;
 }
