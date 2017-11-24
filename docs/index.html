@@ -1,51 +1,66 @@
 <html>
   <head>
-    <title></title>
+    <title>Character Recognizer</title>
     <meta content="">
-    <style></style>
+    <link href="style.css" rel="stylesheet">
   </head>
   <!--WINDOW_TITLE = "Détecteur de caractère - LesDominics"-->
   <body>
-    <h1>Character Recongnizer</h1>
-	<h2>Devis technique des outils</h2>
-	<h3>Outils utilisés</h3>
-	<p>L’outil principal de cette recherche a été le langage de programmation Python 3.6, exécuté sous Windows 8.1 et Windows 10. L’outil de reconnaissance de caractères a été développé dans l’environnement de développement intégré de PyCharm. De plus, les librairies suivantes ont été installées : </p>
-	<ul>
-		<li>Pygame pour l’interface graphique de l’application;</li>
-		<li>NeuroLab pour les réseaux de neurones et l’entraînement;</li>
-		<li>Numpy une dépendance de NeuroLab.</li>
-	</ul>
-	<p>Nous avons également utilisé les librairies standards suivantes :</p>
-	<ul>
-		<li>pickle pour enregistrer et charger les objets de la classe Brain;</li>
-		<li>operator pour trier les listes de résultats;</li>
-		<li>threading pour entraîner plusieurs cerveaux à la fois.</li>
-	</ul>
-	<h3>Installation des outils utilisés</h3>
-	<p>Python 3.6 est disponible à l’adresse suivante :</p>
-	<ul>
-		<li><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></li>
-	</ul>
-	<p>Il faut d’abord installer la libraire Numpy pour installer NeuroLab. Pour Windows, un fichier d’installation est disponible à l’adresse suivante :</p>
-	<ul>
-		<li><a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy">https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy</a></li>
-	</ul>
-	<p>Ensuite, il suffit d’exécuter la commande suivante pour installer NeuroLab et Pygame :</p>
-	<ul>
-		<li>python –m pip install neurolab</li>
-		<li>python –m pip install pygame</li>
-	</ul>
-	<br/>
-	<h2>Exécutable, sources et documentation</h2>
-	<h3>Source</h3>
-	<p>Le code source python est disponible à l’adresse suivante :</p>
-	<ul>
-		<li><a href="https://github.com/DomJob/LesDominics/raw/master/Outils.zip">https://github.com/DomJob/LesDominics/raw/master/Outils.zip</a></li>
-	</ul>
-	<h3>Guide d’utilisation</h3>
-	<p>Il faut d’abord s’assurer que Python ainsi que les librairies mentionnées dans la partie Devis technique de l’outil sont bien installés.</p>
-	<p>Pour démarrer l’application, il faut double-cliquer sur le fichier __main__.py et l’interface s’affichera et permettra à l’utilisateur de dessiner sur la grille. Les résultats sont affichés à la droite de l’interface en temps-réel à mesure que le caractère est dessiné.</p>
-	<p>Pour entraîner de nouveaux cerveaux, l’application permet d’enregistrer les caractères dessinés simplement en dessinant le caractère et en appuyant sur la touche correspondante sur le clavier. Le caractère sera redimensionné, centré et enregistrer dans le fichier data/characters.txt. Le fichier zip fourni contient déjà le fichier de caractères qui a été utilisé lors de notre expérimentation.</p>
-	<p>Il faut ensuite exécuter les fichiers brain/train.py et brain/train_central.py pour entraîner les cerveaux et le cerveau central, respectivement.</p>
+    <div id="body2">
+        <div id="header">
+            <h1>Character Recognizer</h1>
+            <div id="navcontainer">
+                <ul id="navcontainer">
+                 <li><a href="#">Lien</a></li>
+                 <li><a href="#">Lien</a></li>
+                 <li><a href="#">Lien</a></li>
+                 <li><a href="#">Lien</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="text">
+            <h2>Devis technique des outils</h2>
+            <h3>Outils utilisés</h3>
+            <p>L’outil principal de cette recherche a été le langage de programmation Python 3.6, exécuté sous Windows 8.1 et Windows 10. L’outil de reconnaissance de caractères a été développé dans l’environnement de développement intégré de PyCharm. De plus, les librairies suivantes ont été installées : </p>
+            <ul>
+                <li>Pygame pour l’interface graphique de l’application;</li>
+                <li>NeuroLab pour les réseaux de neurones et l’entraînement;</li>
+                <li>Numpy une dépendance de NeuroLab.</li>
+            </ul>
+            <p>Nous avons également utilisé les librairies standards suivantes :</p>
+            <ul>
+                <li>pickle pour enregistrer et charger les objets de la classe Brain;</li>
+                <li>operator pour trier les listes de résultats;</li>
+                <li>threading pour entraîner plusieurs cerveaux à la fois.</li>
+            </ul>
+            <hr />
+            <h3>Installation des outils utilisés</h3>
+            <p>Python 3.6 est disponible à l’adresse suivante :</p>
+            <ul>
+                <li><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></li>
+            </ul>
+            <p>Il faut d’abord installer la libraire Numpy pour installer NeuroLab. Pour Windows, un fichier d’installation est disponible à l’adresse suivante :</p>
+            <ul>
+                <li><a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy">https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy</a></li>
+            </ul>
+            <p>Ensuite, il suffit d’exécuter la commande suivante pour installer NeuroLab et Pygame :</p>
+            <ul>
+                <li>python –m pip install neurolab</li>
+                <li>python –m pip install pygame</li>
+            </ul>
+            <br/>
+            <h2>Exécutable, sources et documentation</h2>
+            <h3>Source</h3>
+            <p>Le code source python est disponible à l’adresse suivante :</p>
+            <ul>
+                <li><a href="https://github.com/DomJob/LesDominics/raw/master/Outils.zip">https://github.com/DomJob/LesDominics/raw/master/Outils.zip</a></li>
+            </ul>
+            <h3>Guide d’utilisation</h3>
+            <p>Il faut d’abord s’assurer que Python ainsi que les librairies mentionnées dans la partie Devis technique de l’outil sont bien installés.</p>
+            <p>Pour démarrer l’application, il faut double-cliquer sur le fichier __main__.py et l’interface s’affichera et permettra à l’utilisateur de dessiner sur la grille. Les résultats sont affichés à la droite de l’interface en temps-réel à mesure que le caractère est dessiné.</p>
+            <p>Pour entraîner de nouveaux cerveaux, l’application permet d’enregistrer les caractères dessinés simplement en dessinant le caractère et en appuyant sur la touche correspondante sur le clavier. Le caractère sera redimensionné, centré et enregistrer dans le fichier data/characters.txt. Le fichier zip fourni contient déjà le fichier de caractères qui a été utilisé lors de notre expérimentation.</p>
+            <p>Il faut ensuite exécuter les fichiers brain/train.py et brain/train_central.py pour entraîner les cerveaux et le cerveau central, respectivement.</p>
+        </div>
+    </div>
   </body>
 </html>
