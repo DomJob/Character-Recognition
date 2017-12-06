@@ -82,3 +82,7 @@ text-align: right;
 #table th{
     background-color: #F8DD99;
 }
+
+.image{
+    text-align: center;
+}
