@@ -25,6 +25,11 @@
         </div>
         <div id="text">
             <h2>Conclusion</h2>
+
+            <p>En conclusion, l’application développée nous a permis d’en connaître plus sur les réseaux de neurones et, tel que mentionné dans la section « Analyse », les résultats obtenus correspondent avec nos hypothèses de départ.</p>
+            <p>Il reste tout de fois une limitation à notre approche : L'infrastructure des réseaux par rapport au nombre d'échantillons de caractères doit rester en «équilibre», c'est-à-dire qu'un nombre insuffisant d'échantillons ou un réseau de neurones avec trop de neurones cachés risque d'être victime d'<i>overfitting</i>. Nous avons rencontré ce problème lors de notre expérimentation, et il a fallu essayer plusieurs différents types de réseaux avant d'arriver à des résultats satisafaisants.</p>
+            <p>Une application possible de notre recherche pourrait être la détection automatique de codes postaux ou de plaques d'immatriculation. En séparant les caractères en blocs différents, il serait possible d'employer les mêmes techniques pour détecter les caractères individuellement pour ensuite les rassembler en version textuelle. Une telle application engendrerait un problème lorsqu'un seul faux positif risque de ruiner toute la détection (par exemple un seul caractère erroné dans un code postal qui empêche la détection). Il y a plusieurs pistes de solutions, par exemple avoir une validation externe soit par un humain ou par une base de données qui détecterait les codes postaux impossibles. Par ailleurs, une fois l'erreur corrigée, il serait possible d'enregistrer les bons caractères et les images pour continuellement entraîner les réseaux de neurones.</p>
+            
         </div>
     </div>
   </body>
