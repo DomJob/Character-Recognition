@@ -26,7 +26,62 @@
         <div id="text">
             <h2>Acquisition des connaissances</h2>
             
-            <img src="images/Colored_neural_network.svg.png" />
+            <p>Avant de commencer la recherche, nous avions une idée de base à propos des réseaux de neurones. Ce sujet est évidemment l'enjeu principal de la recherche et une description sommaire est offerte dans cette section.</p>
+            
+            <h3>1. Réseaux de neurones</h3>
+                                    
+            <h4>1.1. Structure d'un réseau</h4>
+            
+            <p>Le diagramme le plus commun en ce qui a trait aux réseaux de neurones est le suivant:</p>
+            
+            <p>Ce qui est important à retenir à propos des réseaux de neurones est qu'il s'agit de <i>fonctions universelles</i>, c'est-à-dire qu'avec les bons paramètres et la bonne structure, un réseau peut émuler n'importe quelle fonction, même si cette fonction peut sembler abstraite. Par exemple, la fonction émulée par nos réseaux est celle qui prend comme entrée une série de zéros et de uns représentant un caractère, et qui donne une suggestion du caractère le plus probable.</p>
+
+            <div class="image"><img src="images/Colored_neural_network.svg.png" /></div>
+            
+            <p>Chaque entrée (<i>input</i>) représente un nombre entre -1 et 1 (ou dans certains cas, 0 et 1). Chacun des «neurones» est relié avec tous les autres neurones de la couche suivante. Dans le diagramme ci-dessus, il y a une seule couche cachée (<i>hidden layer</i>) mais il peut y en avoir autant que nécessaire. Dans le cadre de l'application développée dans la recherche, une seule couche cachée est utilisée dans les réseaux.</p>
+            
+            <p>Ensuite, suivant le même principe, chaque neurone de la couche cachée est relié avec tous les neurones de la couche suivante, la couche de la sortie (<i>output layer</i>)</p>
+            
+            <h4>1.2. Les poids</h4>
+            
+            <p>Tout le pouvoir d'un réseau de neurone est contenu dans les <i>poids</i> (<i>weights</i>) attachés aux connexions entre les neurones. Il s'agit d'un nombre qui multiplie la valeur contenu dans le neurones.</p>
+            
+            <p>Lorsqu'un neurone reçoit les valeurs des neurones de la couche précédentes, celles-ci sont multipliées par chacun des poids. Ensuite, le résultat de toutes ces multiplications sont additionnées ensemble pour arriver à la valeur du neurone. En général, une fonction mathématique (voir annexe 1) est également utilisée pour transformer la somme en nombre entre -1 et 1.</i>
+            
+            <h3>2. Entraînement d'un réseau</h3>
+            
+            <h4>2.1. Concept</h4>
+            
+            <p>Pour entraîner un réseau de neurone, il faut d'abord lui dire quelles entrées de valeurs sont censées donner quelles sorties de valeur. Lors de l'algorithme d'entraînement, le réseau ajustera les poids du réseaux afin d'arriver à des valeurs la plus près du but.</p>
+            
+            <h4>2.2. Fonction de coût</h4>
+            
+            <p>La fonction de coût (<i>cost function</i>) représente le taux d'erreur entre ce qui est attendu du réseau et ce que le réseau donne.</p>
+            <p>En général, cette fonction est calculée en prenant chaque échantillon et en évaluant ce que le réseau donne comme résultat. On prend ensuite le carré différence entre cette valeur et le but attendu (on met cette valeur au carré pour avoir uniquement un nombre positif). Ce processus est répété pour chaque échantillon et les différences sont additionnées.</p>
+            <p>Une fois la fonction de coût calculée, il est possible d'entraîner le réseau. Peu importe l'algorithme utilisé, son but sera de minimisée cette fonction pour arriver à un résultat le plus près possible de zéro, puisqu'une valeur d'exactement zéro signifie que le réseau ne s'est aucunement trompé.</p>
+            
+            <h4>2.3. Descente du gradient</h4>
+            
+            <p>L'algorithme utilisée dans le cadre de ce travail, nommé <i>Backpropagation</i> est un cas particulier qui utilise la descente du gradient.</p>
+            
+            <p>La descente du gradient permet simplement d'indiquer de combien on doit ajuster chacun des poids du réseau afin d'arriver à minimiser la fonction de coût. Intuivement, on peut s'imaginer sur une montagne. Même si on ne voit ni le haut ni le bas de la montagne, on peut juger immédiatement vers quelle direction le haut se situe d'après la pente à nos pieds.</p>
+            
+            <p>D'un côté plus mathématique, la descente du gradient calcule la dérivée de la fonction de coût par rapport à chaque poids. C'est une opération relativement coûteuse en terme de mémoire (surtout sur des réseaux avec beaucoup de neurones), mais le résultat en vaut la peine: Une fois calculé, le gradient indique dans «quelle direction» il faut se déplacer pour minimiser le taux d'erreur du réseau. Il suffit ensuite de répéter ce processus pour diminuer le taux d'erreur autant que possible.</p>
+            
+            <h4>2.4. Limitation</h4>
+            
+            <p>Il arrive à cet algorithme de bloquer lorsqu'il arrive dans un <i>minimum local</i>, c'est-à-dire que peu importe dans quelle direction il déplace les poids du réseau, le taux d'erreur augmente. L'entraînement du réseau s'arrêtera donc, même si le réseau n'est pas complètement entraîné. Il existe plusieurs techniques pour remédier à ce problèmes, mais elles vont à l'extérieur du cadre du projet de recherche.</p>
+            
+            <h3>Annexe</h3>
+            
+            <h4>A1. Fonctions de transfert</h4>
+            
+            <p>Une fonction de transfert est une fonction qui permet de transformer la somme des valeurs des neurones entrants afin d'arriver à une valeur appropriée avant de la transférer en tant que valeur extrant</p>
+            
+            <p>La fonction de transfert la plus populaire, ainsi que celle utilisée dans la recherche, est la fonction sigmoïde:</p>
+            
+            <div class="image"><img src="images/sigmoid.png" /></div>
+            
         </div>
     </div>
   </body>
